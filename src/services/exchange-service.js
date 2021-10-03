@@ -1,13 +1,12 @@
 
 export default class ExchangeService {
 
-    _apiBase = 'http://data.fixer.io/api';
-    _apiConvert = 'https://api.coingate.com/v2/rates/merchant';
-    _apiKey = '739a34da3572bd5102f30773980e8261';
-    _apiSymbols = 'symbols=EUR,RUB,USD,GBP,JPY,AUD,BRL,DKK,ILS,CNY,CAD,NOK,SGD,CHF,SEK';
+    _apiBase = 'http://apilayer.net/api';
+    _apiKey = 'd439797acc5f91bd692c1ba81e9e36d9';
+    _apiSymbols = 'EUR,RUB,USD,GBP,JPY,AUD,BRL,DKK,ILS,CNY,CAD,NOK,SGD,CHF,SEK';
 
     getAllRates = async () => {
-        const res = await fetch(`${this._apiBase}/latest?access_key=${this._apiKey}&${this._apiSymbols}`);
+        const res = await fetch(`${this._apiBase}/live?access_key=${this._apiKey}&currencies=${this._apiSymbols}`);
 
         if (!res.ok) {
             throw new Error(`Could not fetch /latest received ${res.status}`);
@@ -15,10 +14,9 @@ export default class ExchangeService {
         return await res.json();
     }
 
-    getConvert = async (first, second) => {
-        // const res = await fetch(`${this._apiConvert}/${first}/${second}/`);
-        const res = await fetch(`https://api.coingate.com/v2/rates/merchant/EUR/RUB`);
-        console.log('res', res);
+    getConvert = async (first, second, amount) => {
+        const res = await fetch(`${this._apiBase}/convert?access_key=${this._apiKey}&from=${first}&to=${second}&amount=${amount}`);
+
         if (!res.ok) {
             throw new Error(`Could not fetch /convert received ${res.status}`);
         }

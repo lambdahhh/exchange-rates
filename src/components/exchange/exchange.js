@@ -14,16 +14,15 @@ class Exchange extends Component {
         this.update();
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     this.update();
-    // }
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        this.update();
+    }
 
     update() {
         this.props.getData()
             .then((data) => {
-                console.log(data);
                 this.setState({
-                    rates: data.rates
+                    rates: data.quotes
                 })
             })
     }

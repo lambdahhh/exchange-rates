@@ -10,16 +10,16 @@ export default class ExchangeItem extends Component {
         const {course, isFavorite, setFavorites} = this.props;
 
         let buttonClasses = "far fa-bookmark exchange-button";
-        let classes = "exchange-item";
+        let classes = "exchange-item alert alert-secondary";
 
         if (isFavorite) {
             buttonClasses += ' favorite';
-            classes += ' item-bold';
+            classes += ' alert-info';
         }
 
         return (
             <div className={classes}>
-                <span>{course[0]}</span>
+                <span>{course[0].slice(3)}</span>
                 <span>{course[1]}</span>
                 <span><i
                     onClick={() => setFavorites(course)}
