@@ -14,13 +14,14 @@ class Exchange extends Component {
         this.update();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        this.update();
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     this.update();
+    // }
 
     update() {
         this.props.getData()
             .then((data) => {
+                console.log(data);
                 this.setState({
                     rates: data.rates
                 })
@@ -86,4 +87,10 @@ class Exchange extends Component {
     }
 };
 
-export default withService(Exchange);
+const methodProps = (exchangeService) => {
+    return {
+        getData: exchangeService.getAllRates
+    }
+}
+
+export default withService(Exchange, methodProps);

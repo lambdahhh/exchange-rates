@@ -1,15 +1,16 @@
 import React from "react";
 import {ExchangeServiceConsumer} from "../exchange-service-context";
 
-const withService = (Wrapped) => {
+const withService = (Wrapped, methodProps) => {
     return (props) => {
         return (
             <ExchangeServiceConsumer>
                 {
                     (exchangeService) => {
 
+                        const method = methodProps(exchangeService);
                         return (
-                            <Wrapped {...props} getData={exchangeService.getAllRates} />
+                            <Wrapped {...props} getData={method.getData} getConvert={method.getConvert} />
                         );
                     }
                 }
