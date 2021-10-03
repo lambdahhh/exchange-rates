@@ -1,0 +1,16 @@
+.exchange-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.exchange-button {
+    cursor: pointer;
+}
+
+.favorite {
+    background: white;
+}
+
+.item-bold {
+    font-weight: bold;
+}

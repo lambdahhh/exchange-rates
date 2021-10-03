@@ -1,0 +1,8 @@
+.exchange {
+    margin: 10px;
+}
+
+.exchange ul li {
+    margin: 5px 0;
+    list-style: none;
+}
