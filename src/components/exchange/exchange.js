@@ -7,14 +7,10 @@ class Exchange extends Component {
 
     state = {
         rates: null,
-        updates: 1
+        count: 0
     }
 
     componentDidMount() {
-        this.update();
-    }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
         this.update();
     }
 
@@ -33,6 +29,10 @@ class Exchange extends Component {
         } else {
             localStorage.setItem(course[0], course[1]);
         }
+        const count = this.state.count + 1;
+        this.setState({
+            count: count
+        })
     }
 
     isFavorites(rates) {
