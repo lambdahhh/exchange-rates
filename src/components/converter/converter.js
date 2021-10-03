@@ -28,13 +28,13 @@ class Converter extends Component {
 
         const firstCourse = firstSelect.options[firstSelect.selectedIndex].value;
         const secondCourse = secondSelect.options[secondSelect.selectedIndex].value;
-        const amount = input.value;
+        const amount = Number(input.value);
 
         if (firstCourse === secondCourse) {
             this.setState({
                 amount: amount
             })
-        } else {
+        } else if (firstCourse !== secondCourse && amount !== 0) {
 
             this.props.getConvert(firstCourse, secondCourse, amount)
                 .then((data) => {
